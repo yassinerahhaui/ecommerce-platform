@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'product_list/styles/product-list.css' %}">
+{% endblock style %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row ">
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="container my-5">
+        <div class="card card-filters">
+          <h3 class="card-title p-3 text-center fw-bold card-filters__title">FILTERS</h3>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="search_name" class="form-label fw-bold mx-1 fs-4 search-name-label">Name:</label>
+              <input type="search" class="form-control" id="search_name" placeholder="Search Product By Name...">
+            </div>
+            <div class="mb-3">
+              <label for="search_name" class="form-label fw-bold mx-1 fs-4 search-price_gt-label">Price greater than:</label>
+              <input type="search" class="form-control" id="search_price_gt" placeholder="Search Product By Name...">
+            </div>
+            <div class="mb-3">
+              <label for="search_name" class="form-label fw-bold mx-1 fs-4 search-price_lt-label">Price less than:</label>
+              <input type="search" class="form-control" id="search_price_lt" placeholder="Search Product By Name...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-8 col-lg-9">
+      <div class="row my-5 product-list-container"></div>
+      <div class="pagination-box-category"></div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'product_list/scripts/product_list.js' %}"></script>
+{% endblock scripts %}

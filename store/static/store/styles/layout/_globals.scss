@@ -1,0 +1,8 @@
+@function rem($rem) {
+  $newRem: $rem;
+  @if (type-of($newRem) == number) {
+    @return ($newRem / 10)+rem;
+  } @else {
+    @return $newRem;
+  }
+}

@@ -1,0 +1,44 @@
+@import '../../../../../static/styles/layout/variables';
+@import '../../../../../static/styles/layout/globals';
+@import './components/wallet-content';
+@import './components/transiction-box';
+@import './components/sales-content';
+@import './components/purchases-content';
+@import './components/client-review';
+
+.dashboard-list {
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: rem(10);
+    padding-inline-start: rem(20);
+    border-radius: rem(10);
+    margin-top: rem(5);
+    cursor: pointer;
+    font: {
+      size: rem(25);
+      family: $Poppins;
+      weight: 600;
+    }
+  }
+  &.dark {
+    div {
+      background-color: #040131;
+      box-shadow: 0 0 rem(2) #fff, 0 0 rem(2) #fff;
+      &:hover {
+        background-color: #07043a;
+      }
+    }
+  }
+  &.light {
+    div {
+      background-color: #eee;
+      box-shadow: 0 0 rem(2) #07043a, 0 0 rem(2) #07043a;
+      &:hover {
+        background-color: #dfdddd;
+      }
+    }
+  }
+}

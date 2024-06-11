@@ -1,0 +1,4 @@
+User-agent: *
+Disalow: https//yrshop.tk/admin/
+
+Sitemap: https://yrshop.tk/sitemap.xml

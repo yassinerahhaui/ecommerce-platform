@@ -1,0 +1,18 @@
+footer {
+  box-shadow: 0 0 .4rem #171717;
+  .footer-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+    font: {
+      family: $Amiri;
+      weight: 700;
+      size: 60px;
+    }
+    background-color: $accent;
+    color: $light;
+  }
+}

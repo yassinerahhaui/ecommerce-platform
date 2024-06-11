@@ -1,0 +1,22 @@
+.review-stars {
+  .star {
+    color: $gold;
+    text-shadow: 0 0 rem(1) $dark,0 0 rem(1) $dark;
+    font-size: rem(20);
+  }
+  .reviews-result {
+    margin-inline: rem(2);
+    font: {
+      family: $Quantico;
+      weight: 700;
+      size: rem(20);
+    }
+  }
+  .all-user-ratting {
+    font: {
+      family: $Quantico;
+      size: rem(12);
+      weight: 400;
+    }
+  }
+}

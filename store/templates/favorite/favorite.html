@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'favorite/styles/favorite.css' %}">
+{% endblock style %}
+{% block content %}
+  <div class="container my-5">
+    <div class="card rounded card-favorite">
+      <h1 class="card-title text-center rounded py-3 fs-1 favorite-title fw-bolder bg-danger text-light">Favorite</h1>
+      <div class="card-body">
+        <div class="row product-card-favorite"></div>
+        <div class="pagination-box"></div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block scripts %}
+  <script src="{% static 'favorite/scripts/favorite.js' %}"></script>
+{% endblock scripts %}

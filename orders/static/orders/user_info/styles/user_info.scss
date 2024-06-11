@@ -1,0 +1,15 @@
+@import '../../../../../static/styles/layout/variables';
+@import '../../../../../static/styles/layout/globals';
+
+.card-form {
+  border: rem(2) solid $accent;
+  .card-title {
+    border-bottom: rem(1) solid $accent;
+  }
+}
+.card-form.dark {
+  background-color: $dark2;
+  .card-body {
+    color: $dark;
+  }
+}

@@ -1,0 +1,22 @@
+{% if user.is_authenticated %}
+<span class="chat-rooms-btn"><i class="fa-solid fa-comments"></i></span>
+<div class="chat-rooms"></div>
+<div class="chat-room-box">
+  <div class="chat-room-box__header"></div>
+  <div class="chat-room-box__body"></div>
+  <div class="chat-room-box__footer">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control message-content" placeholder="What's on your mind?" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <button class="input-group-text send-message-btn"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+{% else %}
+<span class="chat-rooms-btn"></span>
+<div class="chat-rooms"></div>
+<div class="chat-room-box">
+  <div class="chat-room-box__header"></div>
+  <div class="chat-room-box__body"></div>
+  <div class="chat-room-box__footer"></div>
+</div>
+{% endif %}

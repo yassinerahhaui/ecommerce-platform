@@ -1,0 +1,59 @@
+.home-profile-info{
+  position: relative;
+  width: 100%;
+  height: rem(400);
+  background-color: #fff;
+  border: 2px solid $accent;
+  border-radius: 10px;
+  box-shadow: 0 0 .2rem #7a7878,0 0 .4rem #7a7878;
+  a {
+    color: #000;
+  }
+  .avatar {
+    position: absolute;
+    top: rem(30);
+    left: 50%;
+    transform: translateX(-50%);
+    width: rem(100);
+    height: rem(100);
+    border-radius: 50%;
+    border-color: #870922;
+    border-width: rem(2);
+    border-style: solid;
+    object-fit: cover;
+  }
+  .username {
+    position: absolute;
+    top: rem(140);
+    left: 50%;
+    transform: translateX(-50%);
+    font: {
+      family: $Poppins;
+      size: rem(15);
+      weight: 700;
+    }
+  }
+  .new-product {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $accent;
+    color: #fff;
+    font: {
+      family: $Poppins;
+      size: rem(25);
+    }
+    &:hover {
+      background-color: #870922;
+    }
+  }
+}
+.home-profile-info.dark {
+  background-color: $dark2;
+  a {
+    color: #eee;
+  }
+  // .new-product {
+  //   border: rem(2) solid #fff;
+  // }
+}

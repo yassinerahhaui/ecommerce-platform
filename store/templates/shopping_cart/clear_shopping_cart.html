@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block scripts %}
+<script>
+  localStorage.removeItem("shopping-cart");
+  window.location.assign("/");
+</script>
+{% endblock scripts %}

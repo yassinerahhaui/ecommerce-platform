@@ -1,0 +1,32 @@
+{% if categories %}
+<div class="category-list" id="lang_en">
+  <ul>
+    {% for category in categories %}
+    <a href="{% url 'store:product_list' category.id %}"><li>
+      <img class="icon category-icon category-dark" src="{{category.icon_dark.url}}" alt="">
+      <img class="icon category-icon category-light" src="{{category.icon_light.url}}" alt="">
+      <span class="text">{{category.name_en}}</span></li></a>
+    {% endfor %}
+  </ul>
+</div>
+<div class="category-list" id="lang_ar">
+  <ul>
+    {% for category in categories %}
+    <a href="{% url 'store:product_list' category.id %}"><li>
+      <img class="icon category-icon category-dark" src="{{category.icon_dark.url}}" alt="">
+      <img class="icon category-icon category-light" src="{{category.icon_light.url}}" alt="">
+      <span class="text">{{category.name_ar}}</span></li></a>
+    {% endfor %}
+  </ul>
+</div>
+<div class="category-list" id="lang_fr">
+  <ul>
+    {% for category in categories %}
+    <a href="{% url 'store:product_list' category.id %}"><li>
+      <img class="icon category-icon category-dark" src="{{category.icon_dark.url}}" alt="">
+      <img class="icon category-icon category-light" src="{{category.icon_light.url}}" alt="">
+      <span class="text">{{category.name_fr}}</span></li></a>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

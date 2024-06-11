@@ -1,0 +1,122 @@
+.star {
+  color: $gold;
+}
+.reviews__details__status {
+  background-color: #fff;
+  border: 1px solid grey;
+  border-radius: rem(6);
+  text-align: center;
+  padding: rem(10);
+  direction: ltr;
+  .star {
+    font-size: rem(18);
+    margin-inline: rem(2);
+    text-shadow: 0 0 rem(3) #000,0 0 rem(3) #000;
+  }
+  .stars-num {
+    margin-inline-start: rem(2);
+    font: {
+      size: rem(18);
+      family: $Quantico;
+      weight: 600;
+    }
+  }
+  .status-reviews {
+    width: 100%;
+    text-align: left;
+    .status-el {
+      width: 100%;
+      height: rem(40);
+      display: flex;
+      align-items: center;
+      .status-left {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .status-middle {
+        width: 66%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        .status-free {
+          width: 100%;
+          height: rem(15);
+          border: 2px solid #bdab0e;
+          border-radius: rem(10);
+          .status-solid {
+            display: block;
+            height: 100%;
+            background-color: $gold;
+            border-radius: rem(10);
+            border-left: 2px solid #bdab0e;
+            border-right: 2px solid #bdab0e;
+          }
+        }
+      }
+      .status-right {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font: {
+          size: rem(14);
+          family: $Quantico;
+          weight: 600;
+        }
+      }
+    }
+  }
+}
+.reviews__details__status.dark {
+  background-color: $dark2;
+  .star {
+    text-shadow: 0 0 rem(3) #545252,0 0 rem(3) #636363;
+  }
+}
+
+.reviews__details__result {
+  direction: ltr;
+  width: 100%;
+  height: 100%;
+  border: 1px solid grey;
+  border-radius: rem(6);
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .star {
+    font-size: rem(40);
+    @media (max-width: $md) {
+      font-size: rem(25);
+    }
+    margin-inline: rem(2);
+    text-shadow: 0 0 rem(3) #000,0 0 rem(3) #000;
+  }
+  .stars-num {
+    margin-inline-start: rem(2);
+    font: {
+      size: rem(40);
+      family: $Quantico;
+      weight: 600;
+    }
+    @media (max-width: $md) {
+      font-size: rem(25);
+    }
+  }
+  .all-user-rate {
+    font: {
+      size: rem(15);
+      family: $Quantico;
+      weight: 600;
+    }
+  }
+}
+.reviews__details__result.dark {
+  background-color: $dark2;
+  .star {
+    text-shadow: 0 0 rem(3) #545252,0 0 rem(3) #636363;
+  }
+}

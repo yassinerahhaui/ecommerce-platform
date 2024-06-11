@@ -1,0 +1,33 @@
+{% load static %}
+{% for cm in comment %}
+  {% if cm.comment %}
+  <div class="review-comment mb-2">
+    <a href="{% url 'accounts:profile' cm.user.id %}" target="_blank" class="user_comment_link">
+      <div class="review-comment__user">
+        {% if cm.profile.image %}
+            <img src="{{ cm.profile.image.url }}" class="review-comment__user__img-profile" alt="{{ cm.user.username }}">
+          {% else %}
+            {% if cm.profile.gender %}
+              {% if cm.profile.gender == 'WOMEN' %}
+                <img src="{% static 'images/no_profile/women.png' %}" alt="no profile image men" class="review-comment__user__img-profile">
+                  {% else %}
+                  <img src="{% static 'images/no_profile/men.png' %}" alt="no profile image women" class="review-comment__user__img-profile">
+                {% endif %}
+              {% else %}
+                <img src="{% static 'images/no_profile/men.png' %}" alt="no profile image" class="review-comment__user__img-profile">
+            {% endif %}
+        {% endif %}
+        {% if cm.user.first_name %}
+        <h6 class="review-comment__user__username">{{ cm.user.first_name|slice:":10" }}</h6>
+        {% else %}
+        <h6 class="review-comment__user__username">{{ cm.user.username|slice:":10" }}</h6>
+        {% endif %}
+      </div>
+    </a>
+    <div class="review-comment__body w-100">
+      <div class="review-comment__body__stars">{{cm.stars}}</div><hr>
+      <p class="review-comment__body__comment">{{cm.comment}}</p>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,17 @@
+{% load static %}
+
+<div class="home-profile-info">
+  <a href="{% url 'accounts:profile_edit' %}">
+    {% if profile.image %}
+      <img src="{{profile.image.url}}" class="avatar" alt="profile image">
+      {% else %}
+      {% if profile.gender == 'WOMEN' %}
+        <img src="{% static 'images/no_profile/women.png' %}" class="avatar" alt="profile image">
+        {% else %}
+        <img src="{% static 'images/no_profile/men.png' %}" class="avatar" alt="profile image">
+      {% endif %}
+    {% endif %}
+    <h3 class="username">{{user.username}}</h3>
+    <a href="{% url 'store:new_product' %}" class="btn w-100 fw-bold new-product"></a>
+  </a>
+</div>

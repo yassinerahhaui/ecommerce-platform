@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'new_product/styles/new_product.css' %}">
+{% endblock style %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row position-relative">
+    <div class="col-md-3 new-product-box">
+      <div class="mx-1 my-2 p-2 rounded new-product-box__card">
+        <span class="hide-form"><i class="fa-solid fa-eye-slash"></i></span>
+        <h1 class="fs-1 p-2 text-center new-product-box__card__title"></h1>
+        <form action="" method="post" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+          <label for="id_name_ar" class="mx-1 fw-bold name_ar"></label>
+          {% render_field form.name_ar type="text" class="form-control mb-1" %}
+          <label for="id_description_ar" class="mx-1 fw-bold description_ar"></label>
+          {% render_field form.description_ar rows="4" class="form-control mb-2" %}
+          <hr>
+          <label for="id_name_en" class="mx-1 fw-bold name_en"></label>
+          {% render_field form.name_en type="text" class="form-control mb-1" %}
+          <label for="id_description_en" class="mx-1 fw-bold description_en"></label>
+          {% render_field form.description_en rows="4" class="form-control mb-2" %}
+          <hr>
+          <label for="id_name_fr" class="mx-1 fw-bold name_fr"></label>
+          {% render_field form.name_fr type="text" class="form-control mb-1" %}
+          <label for="id_description_fr" class="mx-1 fw-bold description_fr"></label>
+          {% render_field form.description_fr rows="4" class="form-control mb-2" %}
+          <hr>
+          {{ form.price|add_label_class:"mx-1 fw-bold price" }}
+          <div class="input-group mb-1">
+            {% render_field form.price class="form-control" %}
+            <span class="input-group-text">Dhs</span>
+            <span class="input-group-text">0.00</span>
+          </div>
+          {{ form.old_price|add_label_class:"mx-1 fw-bold old_price" }}
+          <div class="input-group mb-1">
+            {% render_field form.old_price class="form-control" %}
+            <span class="input-group-text">Dhs</span>
+            <span class="input-group-text">0.00</span>
+          </div>
+          <hr>
+          {{ form.image|add_label_class:"mx-1 fw-bold image" }}
+          <div class="input-group">
+            {% render_field form.image class="form-control" id="imageGlobal" %}
+            <label class="input-group-text image-text" for="imageGlobal">Upload Image</label>
+          </div>
+          <hr>
+          {{ form.size_guide_image|add_label_class:"mx-1 fw-bold image_size_text" }}
+          <div class="input-group">
+            {% render_field form.size_guide_image class="form-control"  %}
+            <label class="input-group-text image-" for="id_size_guide_image">Upload Image</label>
+          </div>
+          <hr>
+          {{ form.cache_en_delevery|add_label_class:"mx-1 fw-bold cache_en_delevery" }}
+          {% render_field form.cache_en_delevery class="mb-2" %} <hr>
+          {{ form.quantity|add_label_class:"mx-1 fw-bold quantity" }}
+          {% render_field form.quantity class="form-control mb-2" %} <hr>
+          {{ form.colors|add_label_class:"mx-1 fw-bold colors" }} <br>
+          <input type="color" id="selectColor">
+          {% render_field form.colors class="form-control" %} <hr>
+          {{ form.sizes|add_label_class:"mx-1 fw-bold sizes" }} 
+          {% render_field form.sizes class="form-control" placeholder="S,M,L,XL,XXL..." %} <hr>
+          <label for="category" class="mx-1 fw-bold category">Category:</label>
+          {% render_field form.category_parent class="form-control" %} <hr>
+          <button type="submit" class="btn btn-success btn-lg fw-bold w-100 mb-3 add-btn">Add Product</button>
+        </form>
+      </div>
+    </div> 
+    <div class="col-md-9 my-2 new-product-details">
+      <span class="show-form"><i class="fa-solid fa-eye"></i></span>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-sm-3 col-lg-2 image-list d-flex d-sm-block">
+              <img src="" class="image-global w-100" alt="">
+            </div>
+            <div class="col-sm-9 col-lg-10">
+              <img src="" class="selected-image w-100" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="product-name"></div>
+          <hr>
+          <div class="details-prices">
+            <span class="details-prices__price mx-2"></span>
+              <span class="details-prices__old-price mx-2"></span>
+          </div>
+          <hr>
+          <div class="product-options">
+            <h2 class="product-options__title"></h2>
+            <div class="product-options__sizes"></div>
+            <div class="product-options__colors my-3"></div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <section class="description">
+        <h3 class="description__title"></h1>
+        <p class="description__paragraph"></p>
+      </section>
+      <div class="container images-details-list">
+        <img src="" alt="" class="my-2 d-block w-100 size-guide-img">
+        <img src="" alt="" class="my-2 d-block w-100 g-image">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'new_product/scripts/new_product.js' %}"></script>
+{% endblock scripts %}
+

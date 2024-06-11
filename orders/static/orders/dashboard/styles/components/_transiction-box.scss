@@ -1,0 +1,44 @@
+.trans-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: rem(15);
+  padding: rem(10);
+  font: {
+    size: rem(18);
+    family: $Poppins;
+    weight: 600;
+  }
+  &.table-title {
+    color: $accent !important;
+    background-color: #0e0425;
+    box-shadow: 0 0 rem(1) $accent, 0 0 rem(3) $accent !important;
+    text-decoration: underline;
+    cursor: default;
+  }
+  span {
+    width: 25%;
+    min-width: rem(150);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  &__price {
+    max-width: rem(30) !important;
+  }
+  &.dark {
+    background-color: #050325;
+    box-shadow: 0 0 rem(1) #b6b6b6, 0 0 rem(3) #b6b6b6;
+  }
+  &.light {
+    background-color: #eee;
+    box-shadow: 0 0 rem(2) #07043a, 0 0 rem(2) #07043a;
+  }
+  @media(max-width: $lg) {
+    font-size: rem(10);
+    span {
+      width: 25%;
+      min-width: rem(50);
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'product_details/styles/product_details.css' %}">
+{% endblock style %}
+  
+{% block content %}
+  <div class="container-fluid px-sm-2 px-md-5 my-4">
+    <div class="row">
+      <div class="col-md-8 col-lg-7 col-xl-6 mb-3">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-2 col-md-3 col-lg-2 image-list d-flex d-sm-block">
+              <img src="{{product.image.url}}" class="mx-2 mx-sm-none" alt="">
+              {% if images.image1 %}
+                <img src="{{images.image1.url}}" class="mx-2 mx-sm-none" alt="">
+              {% endif %}
+              {% if images.image2 %}
+                <img src="{{images.image2.url}}" class="mx-2 mx-sm-none" alt="">
+              {% endif %}
+              {% if images.image3 %}
+                <img src="{{images.image3.url}}" class="mx-2 mx-sm-none" alt="">
+              {% endif %}
+              {% if images.image4 %}
+                <img src="{{images.image4.url}}" class="mx-2 mx-sm-none" alt="">
+              {% endif %}
+            </div>
+            
+            <div class="col-sm-10 col-md-9 col-lg-10">
+              <img src="{{product.image.url}}" class="selected-image" alt="{{product.name_en}}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-5 col-xl-6 mb-3">
+        <div class="container-fluid">
+          <h1 id="title"></h1>
+          <div class="review-stars"></div>
+          <hr>
+          <div class="details-prices">
+            <span class="details-prices__price mx-2">{{product.price}}<span class="price-type"></span></span>
+            {% if product.old_price %}
+              <span class="details-prices__old-price mx-2">{{product.old_price}}<span class="price-type"></span></span>
+            {% endif %}
+            {% if product.sale == True %}
+              <span class="details-prices__sale mx-2"></span>
+            {% endif %}
+            <span class="contact-seler"><i class="fa-solid fa-comments"></i></span>
+            <span class="details-wish-list"><i class="fa-solid fa-heart"></i></span>
+          </div>
+          <hr>
+          <div class="product-options">
+            {% if not product.sizes and not product.colors %}
+              {% else %}
+              <h2 class="product-options__title"></h2>
+            {% endif %}
+            <div class="product-options__sizes"></div>
+            <div class="product-options__colors my-3"></div>
+            <h5 class="product-options__quantity__title"></h5>
+            <div class="product-options__quantity">
+              <span class="product-options__quantity__less"><i class="fa-solid fa-caret-left"></i></span>
+              <input type="text"  value="1"  class="product-options__quantity__value">
+              <span class="product-options__quantity__more"><i class="fa-solid fa-caret-right"></i></span>
+            </div>
+            <button class="btn add-to-cart-btn w-100"></button>
+            {% if product.cache_en_delevery == True %}
+              <button class="btn cache-en-delevery-btn my-3 w-100">CACHE EN DELEVERY</button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <section class="description">
+      <h3 class="description__title"></h1>
+      <p class="description__paragraph"></p>
+    </section>
+    {% include './components/product-slider.html' %}
+    <div class="container images-details-list">
+        {% if product.size_guide_image %}
+        <img src="{{product.size_guide_image.url}}" class="my-2 d-block w-100" alt="">
+        {% endif %}
+        {% if product.image %}
+        <img src="{{product.image.url}}" class="my-2 d-block w-100" alt="">
+        {% endif %}
+        {% if images.image1 %}
+        <img src="{{images.image1.url}}" class="my-2 d-block w-100" alt="">
+        {% endif %}
+        {% if images.image2 %}
+        <img src="{{images.image2.url}}" class="my-2 d-block w-100" alt="">
+        {% endif %}
+        {% if images.image3 %}
+        <img src="{{images.image3.url}}" class="my-2 d-block w-100" alt="">
+        {% endif %}
+        {% if images.image4 %}
+        <img src="{{images.image4.url}}" class="my-2 d-block w-100" alt="">
+        {% endif %}
+        {% if images.image5 %}
+        <img src="{{images.image5.url}}" class="my-2 d-block w-100" alt="">
+        {% endif %}
+    </div>
+    <div class="add-to-cart-success">
+      <div class="success-cart fs-1 fw-bold text-center" role="alert"></div>
+    </div>
+    <div class="cash-on-delivery-bg"></div>
+    <div class="cash-on-delivery-card col-11 col-sm-10 col-md-8 col-lg-6 mx-auto">
+      <div class="card">
+        <h3 class="card-title text-center fs-3 fw-bolder p-3">ENTER YOUR INFO</h3>
+        <div class="card-body">
+          <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+              {% if field == form.products %}
+              {% render_field field type="hidden" id="product" %}
+  
+              {% else %}
+              {% if field == form.price %}
+              {% render_field field type="hidden" id="shopping-cart-price" %}
+  
+              {% else %}
+                <div class="form-floating mb-3">
+                  {% render_field field class="form-control fw-bold" placeholder=field.id_for_label %}
+                  <label for="{{field.id_for_label}}" class="{{field.id_for_label}} fw-bold">{{field.id_for_label}}</label>
+                </div>
+              {% endif %}
+              {% endif %}
+            {% endfor %}
+                
+            <hr>
+            <button class="save-btn btn btn-success btn-lg fw-bold fs-4 w-100 border border-2 border-dark rounded">SAVE</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <section class="container">
+      <hr>
+      {% include './components/reviews-info.html' %}
+      <hr>
+      {% include './components/comments.html' %}
+    </section>
+  </div>
+{% endblock content %}
+
+
+  
+
+{% block scripts %}
+  <script src="{% static 'product_details/scripts/reviews-info.js' %}"></script>
+  <script src="{% static 'product_details/scripts/cache_en_delevery.js' %}"></script>
+  <script src="{% static 'product_details/scripts/details.js' %}"></script>
+  <script src="{% static 'product_details/scripts/slider.js' %}"></script>
+{% endblock scripts %}
+  
+  

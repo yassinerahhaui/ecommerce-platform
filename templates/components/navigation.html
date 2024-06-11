@@ -1,0 +1,77 @@
+{% load static %}
+<nav class="toolbar">
+  <div class="nav-left">
+    <span class="menu-button"><i class="fa-solid fa-bars"></i></span>
+    <a href="{% url 'store:home' %}" class="logo"><img src="{% static '/images/yrshop.png' %}" alt="yrshop logo"></a>
+  </div>
+  <div class="nav-middle d-none d-md-flex"> 
+    <form action="{% url 'store:search_engine_page' %}" method="get">
+      <input type="search" name="name" placeholder="Search By Product or Collection" autocomplete="off" id="search-bar">
+      <button type="submit" id="search_bar_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <div class="search-bar-box"></div>
+    </form>
+  </div>
+  <div class="nav-right d-flex">
+    <a href="{% url 'store:favorite' %}" class="favorite"><i class="fa-solid fa-heart"></i></a>
+    <a href="{% url 'store:shopping_cart' %}" class="shopping-cart position-relative">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="shopping-cart__badge">
+        <span class="shop-num"></span>
+      </span>
+    </a>
+  </div>
+</nav>
+
+
+<div style="width: 100%;height: 64px;"></div>
+<div class="nav-bg-dark"></div>
+<aside class="nav-list">
+  <span class="drawer-close"><i class="fa-solid fa-xmark"></i></span>
+  <div class="nav-list-profile">
+    {% if user.is_authenticated %}
+      <a href="{% url 'accounts:profile_edit' %}"> 
+        {% if profile.image %}
+          <img src="{{profile.image.url}}" alt="">
+          {% else %}
+          {% if profile.gender == 'WOMEN' %}
+            <img src="{% static 'images/no_profile/women.png' %}" alt="no profile image women">
+            {% else %}
+            <img src="{% static 'images/no_profile/men.png' %}" alt="no profile image men">
+          {% endif %}
+        {% endif %}
+        <h3>{{userdata.username}}</h3>
+      </a>
+      {% else %}
+        <a class="nav-list-profile__login" href="{% url 'login' %}"><i class="fa-solid fa-user"></i> <span class="text">Login</span></a>
+        <span class="nav-list-profile__or"> or </span>
+        <a class="nav-list-profile__signup" href="{% url 'accounts:signup' %}"><i class="fa-solid fa-user-pen"></i> <span class="text">SignUp</span></a>
+    {% endif %}
+  </div>
+  <div class="nav-list__links">
+    {% if user.is_authenticated %}
+    <a href="{% url 'orders:user_dashboard' %}" title="dashboard" class="dashboard">
+      <i class="fa-solid fa-gauge"></i>
+      <span>Dashboard</span>
+    </a>
+    {% endif %}
+    <a class="sun theme">
+      <i class="fa-solid fa-moon"></i>
+      <span>theme</span>
+    </a>
+    <a class="language">
+      <i class="fa-solid fa-language"></i>
+      <span>Language</span>
+    </a>
+  </div>
+  <div class="switch-language">
+    <div id="ar">العربية</div>
+    <div id="fr">français</div>
+    <div id="en">english</div>
+  </div>
+  <div class="nav-category"></div>
+  {% if user.is_authenticated %}
+    <a href="{% url 'logout' %}" class="logout nav">
+      <span class="sign-out">Logout </span><i class="fa-solid fa-right-from-bracket"></i>
+    </a>
+  {% endif %}
+</aside>

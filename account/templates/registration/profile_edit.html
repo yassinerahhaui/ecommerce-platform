@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static '/accounts/styles/profile_edit/profile_edit.css' %}">
+{% endblock style %}
+
+{% block content %}
+  <header class="profile-header">
+    {% if profile.image %}
+      <img src="{{profile.image.url}}" alt="profile image" class="profile-header__img-profile">
+      {% else %}
+      {% if profile.gender %}
+          {% if profile.gender == 'WOMEN' %}
+          <img src="{% static 'images/no_profile/women.png' %}" alt="no profile image men" class="profile-header__img-profile">
+            {% else %}
+            <img src="{% static 'images/no_profile/men.png' %}" alt="no profile image women" class="profile-header__img-profile">
+          {% endif %}
+        {% else %}
+          <img src="{% static 'images/no_profile/men.png' %}" alt="no profile image" class="profile-header__img-profile">
+      {% endif %}
+    {% endif %}
+    {% if profile.cover %}
+      <img src="{{profile.cover.url}}" alt="cover image" class="profile-header__img-cover">
+      {% else %}
+      <img src="{% static 'images/no_cover/no_cover.jpg' %}" alt="cover image" class="profile-header__img-cover">
+    {% endif %}
+    
+    {% if profile.brand %}
+    <h1 class="profile-header__username">{{profile.brand}}</h1>
+      {% else %}
+      <h1 class="profile-header__username">{{user.username}}</h1>
+    {% endif %}
+  </header>
+  <main class="container-fluid my-2">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="profile-info p-2">
+          <div class="card profile-edit-info"> 
+            <h1 class="card-title profile-info-title text-center py-2">USER INFO</h1>
+            <div class="card-body info-card-body">
+              <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="image" class="image-profile-edit form-label px-1 fw-bold fs-5">profile image:</label>
+                  {% render_field profileform.image id="image" rows="3" class="form-control" %}
+                  {% if form.image.help_text %}
+                    <span class="text-muted">
+                      {{form.image.help_text}}
+                    </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="cover" class="cover-profile-edit form-label fw-bold fs-5 px-1">profile cover:</label>
+                  {% render_field profileform.cover id="cover" rows="3" class="form-control" %}
+                  {% if form.cover.help_text %}
+                    <span class="text-muted">
+                      {{form.cover.help_text}}
+                    </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="username" class="username-profile-edit form-label fw-bold fs-5 px-1">username:</label>
+                  {% render_field userform.username id="username" class="form-control" %}
+                  {% if form.username.help_text %}
+                    <span class="text-muted">
+                      {{form.username.help_text}}
+                    </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="first_name" class="first_name-profile-edit form-label fw-bold fs-5 px-1">first name:</label>
+                  {% render_field userform.first_name id="first_name" class="form-control" %}
+                  {% if form.first_name.help_text %}
+                  <span class="text-muted">
+                    {{form.first_name.help_text}}
+                  </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="last_name" class="last_name-profile-edit form-label fw-bold fs-5 px-1">last name:</label>
+                  {% render_field userform.last_name id="last_name" class="form-control" %}
+                  {% if form.last_name.help_text %}
+                    <span class="text-muted">
+                      {{form.last_name.help_text}}
+                    </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="email-profile-edit form-label fw-bold fs-5 px-1">email:</label>
+                  {% render_field userform.email id="email" class="form-control" %}
+                  {% if form.email.help_text %}
+                    <span class="text-muted">
+                      {{form.email.help_text}}
+                    </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="phone" class="phone-profile-edit form-label fw-bold fs-5 px-1">phone:</label>
+                  {% render_field profileform.phone id="phone" class="form-control" %}
+                  {% if form.phone.help_text %}
+                  <span class="text-muted">
+                    {{form.phone.help_text}}
+                  </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="gender" class="gender-profile-edit form-label fw-bold fs-5 px-1">gender:</label>
+                  {% render_field profileform.gender id="gender" class="form-control" %}
+                  {% if form.gender.help_text %}
+                  <span class="text-muted">
+                    {{form.gender.help_text}}
+                  </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="age" class="age-profile-edit form-label fw-bold fs-5 px-1">age:</label>
+                  {% render_field profileform.age id="age" class="form-control" %}
+                  {% if form.age.help_text %}
+                  <span class="text-muted">
+                    {{form.age.help_text}}
+                  </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="country" class="country-profile-edit form-label fw-bold fs-5 px-1">country:</label>
+                  {% render_field profileform.country id="country" class="form-control" %}
+                  {% if form.country.help_text %}
+                  <span class="text-muted">
+                    {{form.country.help_text}}
+                  </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="city" class="city-profile-edit form-label fw-bold fs-5 px-1">city:</label>
+                  {% render_field profileform.city id="city" class="form-control" %}
+                  {% if form.city.help_text %}
+                  <span class="text-muted">
+                    {{form.city.help_text}}
+                  </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="address" class="address-profile-edit form-label fw-bold fs-5 px-1">address:</label>
+                  {% render_field profileform.address id="address" rows="3" class="form-control" %}
+                  {% if form.address.help_text %}
+                  <span class="text-muted">
+                    {{form.address.help_text}}
+                  </span>
+                  {% endif %}
+                </div>
+                <div class="mb-3">
+                  <label for="brand" class="brand-profile-edit form-label fw-bold fs-5 px-1">brand:</label>
+                  {% render_field profileform.brand id="brand" class="form-control" %}
+                  {% if form.brand.help_text %}
+                  <span class="text-muted">
+                    {{form.brand.help_text}}
+                  </span>
+                  {% endif %}
+                </div>
+                
+                <button class="edit-button btn btn-lg btn-success border border-2 border-dark w-100">SAVE</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <a href="{% url 'store:new_product' %}" class="btn btn-lg border border-2 border-light fw-bold mb-2 w-100 new-product-button"><i class="fa-solid fa-circle-plus"></i> <span class="new-product-button__text"></span></a>
+        <div class="row profile-products"></div>
+        <div class="pagination-box-profile"></div>
+      </div>
+    </div>
+  </main>
+
+{% endblock content %}
+
+{% block scripts %}
+  <script src="{% static '/accounts/scripts/profile_edit.js' %}"></script>
+{% endblock scripts %}

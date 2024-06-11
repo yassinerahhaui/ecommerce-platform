@@ -1,0 +1,53 @@
+.profile-header {
+    width: 100%;
+    position: relative;
+    height: rem(400);
+    &__img-profile {
+        position: absolute;
+        top: 0;
+        left: rem(80);
+        width: rem(150);
+        height: rem(150);
+        border: rem(5) solid $accent;
+        border-top: 0;
+        border-collapse: collapse;
+        border-bottom-left-radius: rem(10);
+        border-bottom-right-radius: rem(10);
+        z-index: 3;
+        box-shadow: 0 0 rem(10) #212121, 0 0 rem(10) #212121;
+        object-fit: cover;
+        @media(max-width: 500px) {
+            left: rem(30);
+        }
+    }
+    &__img-cover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        box-shadow: 0 0 2px #272727, 0 0 2px #272727;
+        object-fit: cover;
+    }
+    &__username {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 80%;
+        z-index: 2;
+        text-align: center;
+        color: $accent;
+        text-shadow: 2px 2px 4px #272727,2px 2px 4px #272727;
+        font: {
+            size: 10vmax;
+            family: $Poppins;
+            weight: 700;
+        }
+        @media(max-width: 500px) {
+            white-space: inherit;
+        }
+    }
+}

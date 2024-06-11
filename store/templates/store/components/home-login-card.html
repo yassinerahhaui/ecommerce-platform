@@ -1,0 +1,19 @@
+<div class="login-card">
+  <h3 class="fs-1 login-card-title py-3 fw-bold">LOGIN</h3>
+  <div class="card-body">
+    <form action="{% url 'login' %}" class="mb-3" method="post">
+      {% csrf_token %}
+      <div class="form-floating mb-3">
+        <input type="text" name="username" class="form-control inputDir" id="floatingInput" placeholder="name@example.com">
+        <label class="login-email" for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" name="password" class="form-control inputDir" id="floatingPassword" placeholder="Password">
+        <label class="login-password" for="floatingPassword">Password</label>
+      </div>
+      <hr>
+      <button type="submit" class="btn w-100 btn-primary btn-lg py-2 btn-login-card">Submit</button>
+    </form>
+    <a class="forget-password" href="{% url 'password_reset' %}">Lost password?</a> <span class="or">OR</span> <a class="register" href="{% url 'accounts:signup' %}">Register</a>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.cash-on-delivery-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000000c6;
+  z-index: 1011;
+  display: none;
+}
+.cash-on-delivery-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1012;
+  display: none;
+  border: rem(2) solid $accent;
+  .card {
+    .card-title {
+      border-bottom: rem(1) solid $accent;
+    }
+    &.dark {
+      background-color: $dark2 !important;
+      .card-body {
+        color: $dark !important;
+      }
+    }
+
+  }
+}

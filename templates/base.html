@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="yrshop platform e-commerce">
+  <meta name="keywords" content="yrshop YRShop platform ecommerce e-commerce shopping shop yassine rahhaoui">
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon.ico' %}"/>
+  <link rel="stylesheet" href="{% static 'styles/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+  <script src="{% static 'bootstrap/bootstrap.bundle.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+  {% block style %}{% endblock style %}  
+  <title>YRShop</title>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E1KN62XQSC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E1KN62XQSC');
+</script>
+<body>
+  {% include 'components/navigation.html' %}
+  {% include 'components/chat.html' %}
+  <div id="content">
+    {% block content %}{% endblock content %}
+  </div>
+  <footer>
+    {% include 'components/footer.html' %}
+  </footer>
+  <script src="{% static 'scripts/global.js' %}"></script>
+  <script src="{% static 'scripts/category-list.js' %}"></script>
+  <script src="{% static 'scripts/chat.js' %}"></script>
+  <script src="{% static 'scripts/base.js' %}"></script>
+  <script src="{% static 'scripts/search_engine.js' %}"></script>
+  <script src="{% static 'scripts/fetch-product-card.js' %}"></script>
+  <script src="{% static 'scripts/product-card.js' %}"></script>
+  <script src="{% static 'scripts/pagination.js' %}"></script>
+  {% block scripts %}{% endblock scripts %}
+</body>
+</html>
