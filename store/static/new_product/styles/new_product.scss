@@ -1,0 +1,66 @@
+@import '../../store/styles/layout/variables';
+@import '../../store/styles/layout/globals';
+@import '../../product_details/styles/components/images';
+@import '../../product_details/styles/components/reviews';
+@import '../../product_details/styles/components/prices';
+@import '../../product_details/styles/components/options';
+@import '../../product_details/styles/components/description';
+
+.show-form {
+  position: absolute;
+  display: none;
+  top: 10px;
+  left: 20px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  text-shadow:  0 0 2px #000, 0 0 2px #000;
+  :hover {
+    color: #004D40; 
+  }
+}
+.new-product-box {
+  position: relative;
+  &__card {
+    border: rem(3) solid $accent;
+    &__title {
+      border-bottom: rem(3) solid $accent;
+    }
+    &.dark {
+      background-color: $dark2;
+      color: $light;
+    }
+    &.light {
+      background-color: #fff;
+      color: $dark2;
+    }
+  }
+  .hide-form {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+    text-shadow:  0 0 2px #000, 0 0 2px #000;
+    :hover {
+      color: #004D40;
+    }
+  }
+  
+}
+.new-product-details {
+  position: relative !important;
+}
+
+.product-name {
+  h1 {
+    text-shadow: 0 0 rem(1) $gold,0 0 rem(1) $danger;
+    hyphens: auto;
+    font: {
+      family: $Poppins;
+      weight: 700;
+      size: 3vmax;
+    }
+  }
+}

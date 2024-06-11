@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static '/accounts/styles/profile/profile.css' %}">
+{% endblock style %}
+
+{% block content %}
+  <header class="profile-header">
+    {% if userprofile.image %}
+      <img src="{{userprofile.image.url}}" alt="profile image" class="profile-header__img-profile">
+      {% else %}
+      {% if userprofile.gender %}
+          {% if userprofile.gender == 'MEN' %}
+          <img src="{% static 'images/no_profile/men.png' %}" alt="no profile image men" class="profile-header__img-profile">
+          {% else %}
+          <img src="{% static 'images/no_profile/women.png' %}" alt="no profile image women" class="profile-header__img-profile">
+          {% endif %}
+        {% else %}
+          <img src="{% static 'images/no_profile/men.png' %}" alt="no profile image" class="profile-header__img-profile">
+      {% endif %}
+    {% endif %}
+    {% if userprofile.cover %}
+      <img src="{{userprofile.cover.url}}" alt="cover image" class="profile-header__img-cover">
+      {% else %}
+      <img src="{% static 'images/no_cover/no_cover.jpg' %}" alt="cover image" class="profile-header__img-cover">
+    {% endif %}
+    
+    {% if userprofile.brand %}
+    <h1 class="profile-header__username">{{userprofile.brand}}</h1>
+      {% else %}
+      <h1 class="profile-header__username">{{user.username}}</h1>
+    {% endif %}
+  </header>
+  <main class="container-fluid my-5">
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="container">
+          <div class="profile-info card">
+            <h1 class="card-title text-center p-2 user-title">USER INFO</h1>
+            <div class="card-body user-card-body">
+              {% if user.first_name or user.last_name %}
+              <p class="fs-2"><b class="info-name">Name: </b> {% if user.first_name %}{{user.first_name}}{% endif %} {% if user.last_name %}{{ user.last_name }}{% endif %}</p>
+              {% endif %}
+              {% if userprofile.phone %}
+                <p class="fs-2"><b class="info-phone">Phone: </b>{{userprofile.phone}}</p>
+              {% endif %}
+              {% if userprofile.gender %}
+                <p class="fs-2"><b class="info-gender">Gender: </b>{{userprofile.gender}}</p>
+              {% endif %}
+              {% if userprofile.age %}
+                <p class="fs-2"><b class="info-age">Age: </b>{{userprofile.age}}</p>
+              {% endif %}
+              {% if userprofile.country %}
+              <p class="fs-2"><b class="info-country">Country: </b>{{userprofile.country}}</p>
+              {% endif %}
+              {% if userprofile.city %}
+              <p class="fs-2"><b class="info-city">City: </b>{{userprofile.city}}</p>
+              {% endif %}
+              {% if userprofile.address %}
+              <p class="fs-2"><b class="info-address">Address: </b>{{userprofile.address}}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-8 col-lg-9">
+        <div class="container">
+          <div class="row profile-products mb-5"></div>
+          <div class="pagination-box-profile"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock content %}
+
+{% block scripts %}
+  <script src="{% static '/accounts/scripts/profile.js' %}"></script>
+{% endblock scripts %}

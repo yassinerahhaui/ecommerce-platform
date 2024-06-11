@@ -1,0 +1,14 @@
+@import '../../store/styles/layout/variables';
+@import '../../store/styles/layout/globals';
+.card-filters {
+  border: 2px solid $accent;
+  &.dark {
+    background-color: #000;
+  }
+  &.light {
+    background-color: #fff;
+  }
+  &__title {
+    border-bottom: 2px solid $accent;
+  }
+}

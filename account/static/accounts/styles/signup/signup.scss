@@ -1,0 +1,55 @@
+@import '../../../../../store/static/store/styles/layout/variables';
+@import '../../../../../store/static/store/styles/layout/globals';
+
+.signup-card {
+  width: 100%;
+  border: 2px solid $accent;
+  border-radius: 4px;
+  font: {
+    size: 1.3em;
+    family: $Poppins;
+    weight: 400;
+  }
+  .signup-card-title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $accent;
+    font: {
+      size: 2em;
+      family: $Poppins;
+      weight: 700;
+    }
+  }
+  .btn-signup-card {
+    font: {
+      weight: 700;
+    }
+    background-color: $accent;
+    border: none;
+    &:hover {
+      background-color: $secondary;
+    }
+  }
+}
+.signup-card.dark {
+  background-color: $dark2;
+  color: #cfcfcf;
+  .signup-email {
+    color: $dark2 !important;
+  }
+  .signup-password {
+    color: $dark2 !important;
+  }
+  label {
+    color: $dark2 !important;
+  }
+}
+.signup-card.light {
+  background-color: #ffff;
+  color: #303030;
+  label {
+    color: #303030 !important;
+  }
+}

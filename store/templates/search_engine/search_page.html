@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="card search-result-card my-3">
+    <h1 class="card-title search-result-title fs-1 fw-bolder text-light bg-danger p-3 border border-2 border-dark text-center rounded">SEARCH RESULT</h1>
+    <div class="card-body search-page-box row"></div>
+    <div class="pagination-box"></div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'search_engine/search_page.js' %}"></script>
+{% endblock scripts %}

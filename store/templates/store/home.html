@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'store/styles/store.css' %}">
+{% endblock style %}
+
+{% block content %}
+  <div class="container-fluid my-3">
+    <div class="row">
+      <div class="d-none d-sm-block col-sm-5 col-md-4 col-lg-3 mx-xl-4 mb-2" style="max-width: 250px;">
+        {% include 'store/components/category.html' %}
+      </div>
+      <div class="col-sm-7 col-md-8 col-lg-6 mb-2">
+        {% include 'store/components/carousel.html' %}
+      </div>
+      <div class="col-lg-3 d-none d-lg-block">
+        {% if not user.is_authenticated %}
+          {% include 'store/components/home-login-card.html' %}
+          {% else %}
+          {% include 'store/components/home_profile_info.html' %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="container mb-5">
+    <div class="row home-products"></div>
+    <div class="pagination-box"></div>
+  </div>
+{% endblock content %}
+
+
+{% block scripts %}
+  <script src="{% static 'store/scripts/store.js'%}"></script>
+{% endblock scripts %}
+  
+  

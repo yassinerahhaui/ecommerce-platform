@@ -1,0 +1,23 @@
+.selected-image {
+  width: 100%;
+  max-height: rem(800);
+  box-shadow: 0 0 rem(1) $dark,0 0 rem(1) $dark;
+  border: rem(1) solid $accent;
+}
+.image-list {
+  img {
+    border-radius: rem(2);
+    width: 100%;
+    height: rem(80);
+    margin-bottom: rem(5);
+    box-shadow: 0 0 rem(1) $dark,0 0 rem(1) $dark;
+    border: rem(1) solid $accent;
+    cursor: pointer;
+  }
+}
+.images-details-list {
+  img{
+    border-radius: rem(2);
+    box-shadow: 0 0 2px #212121,0 0 rem(2) #212121;
+  }
+}

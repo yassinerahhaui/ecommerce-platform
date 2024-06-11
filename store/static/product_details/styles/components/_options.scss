@@ -1,0 +1,113 @@
+.product-options {
+  max-width: 100% !important;
+  &__title {
+    padding: rem(5);
+    font: {
+      size: rem(26);
+      family: $Roboto;
+      weight: 600;
+    }
+  }
+  &__sizes {
+    &__size {
+      float: left;
+      text-transform: uppercase;
+      text-align: center;
+      cursor: pointer;
+      min-width: rem(40);
+      margin: rem(5);
+      padding: rem(2) rem(5);
+      border-radius: rem(4);
+      font: {
+        family: $Poppins;
+        size: rem(20);
+        weight: 600;
+      }
+      &.light {
+        background-color: #eee;
+        border: 2px solid #000;
+        &:hover {
+          background-color: #000;
+          box-shadow: 0 0 rem(2) #fff;
+          color: #eee;
+        }
+      }
+      &.dark {
+        background-color: #212121;
+        border: 2px solid #000;
+        &:hover {
+          background-color: #000;
+          box-shadow: 0 0 rem(2) #fff;
+        }
+      }
+    }
+    &__size.selectedSize {
+      background-color: #000 !important;
+      box-shadow: 0 0 rem(2) #fff;
+      color: #eee !important;
+    }
+    
+  }
+  &__colors {
+    clear: both;
+    &__color {
+      width: rem(40);
+      height: rem(40);
+      border-radius: rem(4);
+      float: left;
+      margin-inline: rem(5);
+      border: 2px solid #000;
+      cursor: pointer;
+      &.dark {
+        &:hover {
+          box-shadow: 0 0 rem(4) #fff,0 0 rem(4) #fff;
+        }
+      }
+      &.light {
+        &:hover {
+          box-shadow: 0 0 rem(4) #000,0 0 rem(4) #000;
+          border-color: #ccc;
+        }
+      }
+    }
+    &__color.selectedColor.dark {
+      box-shadow: 0 0 rem(4) #fff,0 0 rem(4) #fff;
+    }
+    &__color.selectedColor.light {
+      box-shadow: 0 0 rem(4) #000,0 0 rem(4) #000;
+      border-color: #ccc;
+    }
+    
+  }
+  &__quantity__title {
+    clear: both;
+    padding-inline-start: rem(5);
+    padding-top: rem(10);
+    display: block;
+    font: {
+      family: $Roboto;
+      size: rem(20);
+      weight: 600;
+    }
+  }
+  &__quantity {
+    display: flex;
+    align-items: center;
+    &__less,&__more {
+      font-size: rem(30);
+      padding: rem(10);
+      cursor: pointer;
+    }
+    &__value {
+      width: rem(50);
+      border-radius: rem(4);
+      border: rem(2) solid #000;
+      text-align: center;
+      font: {
+        family: $Poppins;
+        size: rem(15);
+        weight: 700;
+      }
+    }
+  }
+}

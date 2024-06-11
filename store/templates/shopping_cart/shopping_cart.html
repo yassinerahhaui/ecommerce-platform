@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'shopping-cart/styles/shopping-cart.css' %}">
+{% endblock style %}
+
+{% block content %}
+<!-- paypal sdk -->
+<script src="https://www.paypal.com/sdk/js?client-id=AWBLYWN98u76bW8VSyaxLtXKPlXKPE8mNGeSLUSLZC-sMi1LS8VdMJQHk6C6g4m2CmrNYogcggAQe3-I&currency=USD"></script>
+<!-- shopping cart content -->
+<div class="container my-5">
+  <div class="card rounded card-shopping-cart">
+    <h1 class="shopping-cart-title card-title d-flex align-items-center justify-content-center rounded fw-bolder">shopping cart</h1>
+    <div class="card-body shopping-card-body"></div>
+    <hr>
+    <div class="card-footer__total-price"></div>
+    <hr>
+    <div class="container payement">
+      <!-- <div class="row">
+      </div> -->
+      <!-- <div class="col-sm-8 mx-auto">
+        <div class="container">
+          <button class="check-out-btn btn btn-lg mb-3 mb-sm-0 btn-primary w-100 fw-bold fs-4 border border-2 border-dark">CHECK OUT</button>
+        </div>
+      </div> -->
+      <!-- <div class="col-sm-6 ">
+        <div class="container">
+          <button class="cache-en-delevery-btn btn btn-lg btn-warning w-100 fw-bold fs-4 border border-2 border-dark">CACHE EN DELEVRIE</button>
+        </div>
+      </div> -->
+      <div class="mx-auto">
+
+      </div>
+      <div class="mx-auto">
+        <!-- paypal smart button container -->
+        <div id="paypal-button-container"></div>
+      </div>
+      <!-- <div class="check-out-box">
+        <hr>
+      </div> -->
+    </div>
+    <hr>
+    <!-- <div class="cache-en-delevery-user-info text-dark">
+      <div class="col-sm-6 mx-auto">
+        <form action="" method="post">
+          {% csrf_token %}
+          {% for field in form %}
+            {% if field == form.products %}
+            {% render_field field type="hidden" id="shopping-cart-products" %}
+
+            {% else %}
+            {% if field == form.price %}
+            {% render_field field type="hidden" id="shopping-cart-price" %}
+
+            {% else %}
+              <div class="form-floating mb-3">
+                {% render_field field class="form-control fw-bold" placeholder=field.id_for_label %}
+                <label for="{{field.id_for_label}}" class="{{field.id_for_label}} fw-bold">{{field.id_for_label}}</label>
+              </div>
+            {% endif %}
+            {% endif %}
+          {% endfor %}
+              
+          <hr>
+          <button class="save-btn btn btn-success btn-lg fw-bold fs-4 w-100 border border-2 border-dark rounded">SAVE</button>
+        </form>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'shopping-cart/scripts/shopping-cart.js' %}"></script>
+<script>
+  paypal.Buttons({
+    // Sets up the transaction when a payment button is clicked
+    createOrder: (data, actions) => {
+      let myOrder = []
+      localStorage.getItem('shopping-cart') ? JSON.parse(localStorage.getItem('shopping-cart')).map(el=> {
+        myOrder.push({
+          "name": `${el.name_en}`, /* Shows within upper-right dropdown during payment approval */
+          "unit_amount": {
+            "currency_code": "USD",
+            "value": `${el.price / 10}`
+          },
+          "quantity": `${el.quantity}`
+        })
+      }) : [];
+      return actions.order.create({
+        "purchase_units": [{
+            "amount": {
+              "currency_code": "USD",
+              "value": `${totalPrice / 10}`,
+              "breakdown": {
+                "item_total": {  /* Required when including the items array */
+                  "currency_code": "USD",
+                  "value": `${totalPrice / 10}`
+                }
+              }
+            },
+            // "items": myOrder
+          }]
+      });
+    },
+    // Finalize the transaction after payer approval
+    onApprove: (data, actions) => {
+      return actions.order.capture().then(function(orderData) {
+        // Successful capture! For dev/demo purposes:
+        // console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+        const transaction = orderData.purchase_units[0].payments.captures[0];
+        // alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+        var create_paypal_order = async function create_paypal_order(transaction_id) {
+          var shoppingCart = localStorage.getItem('shopping-cart');
+          var res = await fetch(siteName + '/orders/create/paypal/order', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'applications/json',
+              'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify({
+              'products': shoppingCart,
+              'price': totalPrice,
+              'transaction_id': transaction_id
+            })
+          });
+          var data = await res.json();
+          if (data.result === 'success') {
+            localStorage.removeItem('shopping-cart');
+            window.location.assign(`/orders/client/info/paypal/${transaction.id}`);
+          }
+        }
+        create_paypal_order(transaction.id)
+        
+        // When ready to go live, remove the alert and show a success message within this page. For example:
+        // const element = document.getElementById('paypal-button-container');
+        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+        // Or go to another URL:  actions.redirect('thank_you.html');
+      });
+    }
+  }).render('#paypal-button-container');
+</script>
+{% endblock scripts %}
+
+
+
+
+

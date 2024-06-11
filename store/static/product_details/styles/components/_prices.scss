@@ -1,0 +1,32 @@
+.details-prices {
+  &__price {
+    font: {
+      family: $Quantico;
+      size: rem(25);
+      weight: 700;
+    }
+    text-decoration: underline;
+  }
+  &__old-price {
+    color: #8d8b8b;
+    text-shadow: 0 0 rem(1) black;
+    font: {
+      family: $Quantico;
+      weight: 400;
+      size: rem(20);
+    }
+    text-decoration: line-through;
+  }
+  &__sale {
+    display: inline-block;
+    padding: rem(2) rem(8);
+    background-color: $danger;
+    color: $light;
+    border-radius: rem(4);
+    font: {
+      family: $Amiri;
+      size: rem(25);
+      weight: 700;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@import './layout/variables';
+@import './layout/globals';
+@import './components/header';
+@import './components/product-card';
+@import './components/edit-btn';
+
+
+.profile-info {
+  border: rem(3) solid $accent;
+  margin-bottom: 10px;
+  .user-title {
+    border-bottom: rem(3) solid $accent;
+    cursor: pointer;
+  }
+}
+.profile-info.dark {
+  background-color: $dark2;
+  color: $light;
+  .user-title {
+    &:hover {
+      background-color: #000;
+    }
+  }
+}
+.profile-info.light {
+  background-color: #fff;
+  color: $dark;
+  .user-title {
+    background-color: #eee;
+  }
+}
+.user-card-body {
+  max-height: 700px;
+  overflow: hidden;
+  padding: 10px;
+  transition: max-height 1s ease-in-out,padding 1s ease-in-out;
+  @media(max-width: $sm){
+    max-height: 0;
+    padding: 0;
+  }
+}

@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'new_product/styles/new_product.css' %}">
+{% endblock style %}
+
+{% block content %}
+<div class="container-fluid my-3">
+  <div class="row">
+    <div class="col-sm-5 col-md-3 new-product-box">
+      <div class="mx-1 my-2 p-2 new-product-box__card">
+        <span class="hide-form"><i class="fa-solid fa-eye-slash"></i></span>
+        <h1 class="fs-1 p-2 text-center new-product-box__card__title"></h1>
+        <form action="" method="post" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+          {% for field in productform %}
+          
+          <div class="{{field.label}}">
+            {% if field == productform.cache_en_delevery %}
+              {{ field|add_label_class:"mx-1 fw-bold cache_en_delevery" }}
+              {% render_field field class="mb-2" %}
+            {% else  %}
+            {{ field|add_label_class:'mx-1 fw-bold d-block' }}
+            {% if field == productform.colors %}
+            <input type="color" class="form-control-color color-selector" name="" id="">
+            {% endif %}
+            
+              {% render_field field class="form-control" %}
+            {% endif %}
+            {% if field.help_text %}
+            <small class="text-muted">{{ field.help_text|safe }}</small>
+            {% endif %}
+
+            {% if field.errors %}
+            <div class="invalid-feedback">
+              {% for error in field.errors %}
+              {{ error }}
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+          
+          <hr>
+          {% endfor %}
+
+          {% for field in imagesform %}
+          <div class="mb-1 field {{field.id_for_label}}">
+            {{ field|add_label_class:"form-label w-100 fw-bold fs-6 imgN" }}
+            {% render_field field class="form-control" %}
+            {% if field.help_text %}
+            <small class="text-muted">{{ field.help_text|safe }}</small>
+            {% endif %}
+            {% if field.errors %}
+            <div class="invalid-feedback">
+              {% for error in field.errors %}
+              {{ error }}
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+          <hr>
+          {% endfor %}
+          <button type="submit" class="btn btn-success mb-2 w-100 btn-lg fw-bold fs-5">SAVE</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-7 col-md-9 new-product-details">
+      <span class="show-form"><i class="fa-solid fa-eye"></i></span>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-sm-3 col-lg-2 image-list d-flex d-sm-block">
+              <img src="" class="image-global w-100 g-image" alt="">
+              <img src="" class="image-global w-100 image1" alt="">
+              <img src="" class="image-global w-100 image2" alt="">
+              <img src="" class="image-global w-100 image3" alt="">
+              <img src="" class="image-global w-100 image4" alt="">
+            </div>
+            <div class="col-sm-9 col-lg-10">
+              <img src="" class="selected-image g-image w-100" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="product-name"></div>
+          <hr>
+          <div class="details-prices">
+            <span class="details-prices__price mx-2"></span>
+            <span class="details-prices__old-price mx-2"></span>
+          </div>
+          <hr>
+          <div class="product-options">
+            <h2 class="product-options__title"></h2>
+            <div class="product-options__sizes"></div>
+            <div class="product-options__colors my-3"></div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <section class="description">
+        <h3 class="description__title">
+          </h1>
+          <div class="description"></div>
+      </section>
+      <div class="container images-details-list">
+        <img src="" alt="" class="my-2 d-block w-100 size-guide-img">
+        <img src="" alt="" class="my-2 d-block w-100 g-image">
+        <img src="" alt="" class="my-2 d-block w-100 image1">
+        <img src="" alt="" class="my-2 d-block w-100 image2">
+        <img src="" alt="" class="my-2 d-block w-100 image3">
+        <img src="" alt="" class="my-2 d-block w-100 image4">
+        <img src="" alt="" class="my-2 d-block w-100 image5">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'edit_product/scripts/edit_product.js' %}"></script>
+{% endblock scripts %}

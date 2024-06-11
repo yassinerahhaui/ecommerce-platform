@@ -1,0 +1,47 @@
+@import '../profile/layout/variables';
+@import '../profile/layout/globals';
+@import '../profile/components/header';
+@import '../profile/components/product-card';
+@import '../profile/components/edit-btn';
+
+.new-product-button {
+  color: white !important;
+  background-color: $accent !important;
+  &:hover {
+    background-color: #ed203b !important;
+  }
+}
+.profile-edit-info {
+  border: rem(4) solid $accent;
+  .profile-info-title {
+    border-bottom: rem(4) solid $accent;
+    cursor: pointer;
+    
+  }
+}
+.profile-edit-info.dark {
+  background-color: $dark2;
+  color: $light;
+  .profile-info-title {
+    &:hover {
+      background-color: #000;
+    }
+  }
+}
+.profile-edit-info.light {
+  background-color: #fff;
+  color: $dark2;
+  .profile-info-title {
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}
+.info-card-body {
+  overflow: hidden;
+  transition: max-height 1s ease-in-out, padding 1s ease-in-out;
+  max-height: 950px;
+  @media(max-width: $md) {
+    max-height: 0;
+  }
+}

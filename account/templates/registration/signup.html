@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static '/accounts/styles/signup/signup.css' %}">
+{% endblock style %}
+  
+
+{% block content %}
+  <div class="container">
+    <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-6 my-5 mx-auto">
+      <div class="signup-card">
+        <h3 class="fs-1 signup-card-title py-3 fw-bold">SIGN UP</h3>
+        <div class="card-body">
+          <form action="{% url 'accounts:signup' %}" class="mb-3" novalidate method="post">
+            {% csrf_token %}
+            {% with WIDGET_ERROR_CLASS='is-invalid' WIDGET_REQUIRED_CLASS='required' %}
+            <div class="form-floating mb-3">
+              {% render_field form.username id="username" class="form-control inputDir" placeholder="enter your username..." %}
+              <label class="login-usename" for="username">{{form.username.label}}</label>
+              {% if form.username.help_text %}
+              <span class="text-muted help-text__username">
+                {{form.username.help_text}}
+              </span>
+              {% endif %}
+            </div>
+            <div class="form-floating mb-3">
+              {% render_field form.email class="form-control inputDir" id="email" placeholder="name@example.com" required="true" %}
+              <label class="login-email" for="email">{{form.email.label}}</label>
+              <span class="text-muted help-text__email">
+                Email is required.
+              </span>
+            </div>
+            
+            <div class="form-floating">
+              {% render_field form.password1 class="form-control inputDir mb-3" id="floatingPassword" placeholder="Password" %}
+              <label class="login-password" for="floatingPassword">Password</label>
+              {% if form.password1.help_text %}
+                <span class="text-muted help-text__password1">
+                  {{form.password1.help_text}}
+                </span>
+              {% endif %}
+            </div>
+            <div class="form-floating">
+              {% render_field form.password2 class="form-control inputDir mb-3" id="floatingPassword2" placeholder="Password Confirmation" %}
+              <label class="login-password-confirmation" for="floatingPassword2">Password Confirmation</label>
+              {% if form.password2.help_text %}
+                <span class="text-muted help-text__password2" id='help-text__password2'>
+                  {{form.password2.help_text}}
+                </span>
+              {% endif %}
+            </div>
+            {% endwith %}
+            <hr>
+            <button type="submit" class="btn w-100 btn-primary btn-lg py-2 btn-signup-card fs-2">Sign Up</button>
+          </form>
+          <span class="login-link">You can <a href="{% url 'login' %}">login here.</a></span>
+            
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+
+{% block scripts %}
+  <script src="{% static 'accounts/scripts/signup.js' %}"></script>
+{% endblock scripts %}
+  

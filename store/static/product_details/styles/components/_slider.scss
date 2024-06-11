@@ -1,0 +1,41 @@
+.slider-full {
+  width: 100%;
+  overflow-x: scroll;
+  .slider-container {
+    width: max-content;
+    .product-slider {
+      width: rem(200);
+      cursor: pointer;
+      margin-left: rem(5);
+      margin-right: rem(5);
+      margin-bottom: rem(10);
+      background-color: white;
+      box-shadow: 0 0 rem(1) #c7c6c6, 0 0 rem(2) #c7c6c6;
+      border-radius: rem(4);
+      padding: rem(3);
+      float: left;
+      &__img {
+        width: 100%;
+        height: rem(250);
+        border-radius: rem(4);
+      }
+      &__name {
+        width: 100%;
+        margin-top: rem(3);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: center;
+        color: $dark2;
+        font: {
+          size: rem(12);
+          family: $Poppins;
+          weight: 600;
+        }
+      }
+      &:hover {
+        text-shadow: 0 0 rem(1) $accent, 0 0 rem(1) $accent;
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@import './layout/variables';
+@import './layout/globals';
+@import './components/navigation';
+@import './components/search-engine';
+@import './components/login-card';
+@import './components/product-card';
+@import './components/remove-product';
+@import './components/chat';
+@import './components/footer';
+
+html {
+  font: {
+    size: 10px;
+    family: $Roboto;
+  }
+}
+body.dark {
+  background-color: $dark;
+  color: #cfcfcf;
+}
+body.light {
+  background-color: #cfcfcf;
+  color: #252525;
+}
+body {
+  background-color: #cfcfcf;
+  color: #212121;
+  &::-webkit-scrollbar {
+    width: 1em;
+  }
+   
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+   
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
+}
+#content {
+  min-height: 90vh;
+} 
+.page-link {
+  background-color: #fff;
+  color: $accent;
+  font-weight: 600;
+  &:hover {
+    color: #000;
+  }
+}
+.paginationActive {
+  .page-link {
+    background-color: $accent !important;
+    color: #fff;
+    font-weight: 600;
+  }
+}
+.pagination {
+  li {
+    margin-inline: rem(2);
+    a {
+      border: rem(2) solid $accent;
+      border-radius: 50% !important;
+      cursor: pointer;
+    }
+  }
+}

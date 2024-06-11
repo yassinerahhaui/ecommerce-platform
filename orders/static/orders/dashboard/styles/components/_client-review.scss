@@ -1,0 +1,27 @@
+.star-review {
+  color: $gold;
+  text-shadow: 0 0 rem(2) $dark2, 0 0 rem(2) $dark2;
+  font-size: rem(18);
+  &.active {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+  }
+}
+.rev_stars {
+  font: {
+    size: rem(15);
+    family: $Quantico;
+    weight: 600;
+  }
+}
+.input-review-comment {
+  font-size: rem(15);
+}
+#send-review-comment {
+  font-size: rem(15);
+  cursor: pointer;
+  color: $accent;
+  &:hover {
+    color: $primary;
+  }
+}

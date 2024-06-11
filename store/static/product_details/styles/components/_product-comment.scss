@@ -1,0 +1,58 @@
+.review-comment {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid grey;
+  border-radius: 4px;
+  .user_comment_link {
+    color: inherit !important;
+    text-decoration: none;
+  }
+  &__user {
+    border-inline-end: 1px solid grey;
+    padding-inline-end: 10px;
+    
+    &__img-profile {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    &__username {
+      text-align: center;
+      margin-top: 5px;
+      font: {
+        size: 15px;
+        family: $Poppins;
+        weight: 600;
+      }
+    }
+  }
+  &__body {
+    .star {
+      font: {
+        size: 16px;
+      }
+      text-shadow: 0 0 2px #212121,0 0 2px #212121;
+    }
+    .stars-result{
+      font: {
+        size: 15px;
+        family: $Poppins;
+        weight: 500;
+      }
+    }
+    padding: 10px;
+    &__comment {
+      font: {
+        size: 12px;
+        family: $Poppins;
+        weight: 500;
+      }
+    }
+  }
+}
+.review-comment.dark {
+  background-color: $dark2;
+}

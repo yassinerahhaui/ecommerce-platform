@@ -1,0 +1,47 @@
+.login-card {
+  width: 100%;
+  border: 2px solid $accent;
+  border-radius: 4px;
+  box-shadow: 0 0 .2rem #7a7878,0 0 .4rem #7a7878;
+  font: {
+    size: 1.3em;
+    family: $Poppins;
+    weight: 400;
+  }
+  .login-card-title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $accent;
+    font: {
+      size: 2em;
+      family: $Poppins;
+      weight: 700;
+    }
+  }
+  .btn-login-card {
+    font: {
+      weight: 700;
+    }
+    background-color: $accent;
+    border: none;
+    &:hover {
+      background-color: $secondary;
+    }
+  }
+}
+.login-card.dark {
+  background-color: $dark2;
+  color: #cfcfcf;
+  .login-email {
+    color: $dark2 !important;
+  }
+  .login-password {
+    color: $dark2 !important;
+  }
+}
+.login-card.light {
+  background-color: #ffff;
+  color: #303030;
+}
