@@ -97,10 +97,10 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 
 123456
-        'USER': 'avnadmin',
-        'PASSWORD': 'AVNS_JOzCSixW28SVPPyANk_',
-        'HOST': 'ecom2-yassinerahhaoui12-c6ae.e.aivencloud.com',
-        'PORT': '11269'
+        'USER': 'postgres',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
