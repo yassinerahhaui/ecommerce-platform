@@ -96,10 +96,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'project.wsgi.application'
 
 
-123456
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ecom2',
         'USER': 'postgres',
         'PASSWORD': '123456',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': '5432'
     }
 }
@@ -143,11 +146,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = ["/home/yassinerahhaoui/yrshop_ai/static"]
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    '/var/www/static/',
+]
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = "/home/yassinerahhaoui/yrshop_ai/media"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
