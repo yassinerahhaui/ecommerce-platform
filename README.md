@@ -1,6 +1,23 @@
-# YRShop AI Django
+# ecommerce-platform
 
-A multilingual e-commerce platform built with Django, PostgreSQL, Django REST Framework, and a responsive web interface. YRShop provides product discovery, seller and customer accounts, shopping workflows, order management, product reviews, and buyer–seller messaging.
+A multilingual e-commerce platform built with Django, PostgreSQL, Django REST Framework, and a responsive storefront experience. The project supports product discovery, customer and seller workflows, order management, real-time communication, and a REST API for modern commerce applications.
+
+## Topics
+
+- django
+- python
+- ecommerce
+- marketplace
+- postgresql
+- django-rest-framework
+- drf
+- javascript
+- html
+- css
+- scss
+- multilingual
+- rest-api
+- online-store
 
 ## Features
 
@@ -53,8 +70,8 @@ A multilingual e-commerce platform built with Django, PostgreSQL, Django REST Fr
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yassinerahhaui/yrshop_ai_django.git
-cd yrshop_ai_django
+git clone https://github.com/yassinerahhaui/ecommerce-platform.git
+cd ecommerce-platform
 ```
 
 ### 2. Create and activate a virtual environment
@@ -93,7 +110,7 @@ Host:     127.0.0.1
 Port:     5432
 ```
 
-Do not commit database passwords, email credentials, Django secret keys, or other sensitive values to source control. For a production deployment, move these settings into environment variables and rotate any credentials that may have been exposed.
+Do not commit database passwords, email credentials, Django secret keys, or other sensitive values to source control. For a production deployment, move these settings into environment variables and secure them with a proper secret manager.
 
 ### 5. Apply migrations
 
@@ -201,7 +218,7 @@ The repository is configured for local development. Before using it in productio
 
 ## Contributing
 
-Contributions are welcome. Please open an issue to discuss a significant change before submitting a pull request. Pull requests should include a clear description, relevant screenshots for UI changes, migration notes when applicable, and tests or verification steps.
+Contributions are welcome. Please open an issue to discuss a significant change before submitting a pull request. Pull requests should include a clear description, relevant screenshots for UI changes, and a focused summary of the modification.
 
 ## License
 
@@ -209,4 +226,4 @@ No license is currently specified for this repository. Until a license is added,
 
 ## Repository
 
-[View YRShop AI Django on GitHub](https://github.com/yassinerahhaui/yrshop_ai_django)
+[View ecommerce-platform on GitHub](https://github.com/yassinerahhaui/ecommerce-platform)
