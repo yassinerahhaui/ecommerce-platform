@@ -1,6 +1,10 @@
-# YRShop AI Django
+# ecommerce-platform
 
-A multilingual e-commerce platform built with Django, PostgreSQL, Django REST Framework, and a responsive web interface. YRShop provides product discovery, seller and customer accounts, shopping workflows, order management, product reviews, and buyer–seller messaging.
+A multilingual e-commerce marketplace built with Django, PostgreSQL, Django REST Framework, HTML, CSS/SCSS, and JavaScript. ecommerce-platform provides product discovery, seller and customer accounts, shopping workflows, order management, product reviews, and buyer–seller messaging.
+
+## Topics
+
+Django, Python, e-commerce, PostgreSQL, Django REST Framework, JavaScript, HTML, CSS, SCSS, multilingual, REST API, marketplace
 
 ## Features
 
@@ -53,8 +57,8 @@ A multilingual e-commerce platform built with Django, PostgreSQL, Django REST Fr
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yassinerahhaui/yrshop_ai_django.git
-cd yrshop_ai_django
+git clone https://github.com/yassinerahhaui/ecommerce-platform.git
+cd ecommerce-platform
 ```
 
 ### 2. Create and activate a virtual environment
@@ -209,4 +213,4 @@ No license is currently specified for this repository. Until a license is added,
 
 ## Repository
 
-[View YRShop AI Django on GitHub](https://github.com/yassinerahhaui/yrshop_ai_django)
+[View ecommerce-platform on GitHub](https://github.com/yassinerahhaui/ecommerce-platform)
